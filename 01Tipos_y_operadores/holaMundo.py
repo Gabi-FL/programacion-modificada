@@ -1,8 +1,5 @@
-limite = int(input(print("escribe el límite superior")))
-contador = 0
+filas = int(input(print("Indica el número de filas que quieres dibujar")))
 
-for i in range (2, limite + 1):
-    for j in range(i, 1, -1):
-        if i % j != 0:
-            contador += 1
-print (contador)
+if filas > 0:
+    for i in range (1, filas + 1):
+        print (i * "*" + 2)
