@@ -1,23 +1,31 @@
-def celsius_a_fahrenheit(gradosC: float) -> float:
-    '''
-    Convierte grados Celsius a Fahrenheit
+def crea_lista(posiciones: int) -> list:
 
-    Parámetros:
-    gradosC (float): Los grados en Celsius
+    lista = []
+    for i in range (posiciones):
+        lista.append(int(input("Escribe un número: ")))
+    print(lista)
+    return lista
 
-    Devuelve:
-    float: Los grados covnertidos a Fahrenheit
+def invierte_lista(lista: list) -> list:
+    """Invierte el orden de los elementos de una lista dada
 
-    >>> celsius_a_fahrenheit(0)
-    32.0
-    >>> celsius_a_fahrenheit(100)
-    212.0
-    >>> celsius_a_fahrenheit(-40)
-    -40.0
-    >>> celsius_a_fahrenheit(37)
-    98.6
-    >>> celsius_a_fahrenheit(-10)
-    14.0
-    '''
+    Args:
+        lista (list): la lista que se le da
 
-    return (gradosC * 9 / 5) + 32
+    Returns:
+        list: la lsta con los elementos invertidos
+
+    >>> invierte_lista([1, 2, 3, 4, 5])
+    [5, 4, 3, 2, 1]
+    >>> invierte_lista([])
+    []
+    >>> invierte_lista(['a', 'b', 'c'])
+    ['c', 'b', 'a']
+    """
+    return lista[::-1]
+
+lista = crea_lista(5)
+
+lista_invertida = invierte_lista(lista)
+
+print (lista_invertida)
