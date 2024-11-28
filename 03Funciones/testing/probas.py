@@ -1,25 +1,24 @@
-def mañana(hoy: str) -> str:
-    """Recibe un día de la semana y devuelve el siguiente
-        Args:
-        hoy(str): el día como cadena de caracteres
+def detecta_verbos(cadena: str) -> bool | None:
+    """Recibe una palavbra y te dice si es un verbo o no
+
+    Args:
+        cadena (str): la palabra
 
     Returns:
-        str: el día siguiente al que has escrito
+        bool: devuelve verdadero o falso si es verbo o no
 
-    >>> mañana("lunes")
-    'martes'
-    >>> mañana("domingo")
-    'lunes'
-    >>> mañana("hola")
-    'Valor no válido'
+    >>> 'comer'
+    True
+    >>> 'vivir'
+    True
+    >>> 'hablar'
+    True
+    >>> 'programación'
+    False
     """
-    dias = ("lunes", "martes", "miércoles",
-            "jueves", "viernes", "sábado", "domingo")
-    if hoy in dias:
-        return dias[(dias.index(hoy) + 1) % 7]
-    else:
-        return "Valor no válido"
+    if cadena.endswith("ar") or cadena.endswith("er") or cadena.endswith("ir"):
+        return True
+    
 
-
-hoy = input("escribe el nombre del día de la semana:\n")
-print(mañana(hoy))
+cadena = input("Escribe la palabra: ")
+print(f"la palabra {cadena} {"es un verbo" if detecta_verbos(cadena) else "no es un verbo"}")
