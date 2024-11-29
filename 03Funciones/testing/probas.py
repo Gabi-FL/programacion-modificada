@@ -1,24 +1,25 @@
-def detecta_verbos(cadena: str) -> bool | None:
-    """Recibe una palavbra y te dice si es un verbo o no
+def comp_pal_frase(frase: str) -> bool:
+    """comprueba si una frase es un palíndromo
 
     Args:
-        cadena (str): la palabra
+        frase (str): la frase que el usuario escribe
 
     Returns:
-        bool: devuelve verdadero o falso si es verbo o no
+        bool: booleano de si es palindromo o no
 
-    >>> 'comer'
+    >>> comp_pal_frase("La ruta nos aporto otro paso natural")
     True
-    >>> 'vivir'
-    True
-    >>> 'hablar'
-    True
-    >>> 'programación'
-    False
+    >>> comp_pal_frase("Ana come pan")
     """
-    if cadena.endswith("ar") or cadena.endswith("er") or cadena.endswith("ir"):
+    frase_min = frase.lower()
+    lista_solo_letras = ""
+    for letra in frase_min:
+        if letra.isalpha:
+            lista_solo_letras += letra
+    if lista_solo_letras == lista_solo_letras[::-1]:
         return True
-    
+    else:
+        return False
 
-cadena = input("Escribe la palabra: ")
-print(f"la palabra {cadena} {"es un verbo" if detecta_verbos(cadena) else "no es un verbo"}")
+
+print(comp_pal_frase("La ruta nos aporto otro paso natural"))
