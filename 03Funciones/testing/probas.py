@@ -1,25 +1,23 @@
-def comp_pal_frase(frase: str) -> bool:
-    """comprueba si una frase es un palíndromo
+def num_palabras(frase: str) -> int:
+    """recibe una frase y te cuenta las palabras
 
     Args:
-        frase (str): la frase que el usuario escribe
+        frase (str): la frase
 
     Returns:
-        bool: booleano de si es palindromo o no
-
-    >>> comp_pal_frase("La ruta nos aporto otro paso natural")
-    True
-    >>> comp_pal_frase("Ana come pan")
+        int: el número de palabras
+    >>> num_palabras("Hola")
+    1
+    >>> num_palabras("Hola mundo")
+    2
+    >>> num_palabras("Hola mundo cruel")
+    3
+    >>> num_palabras("")
+    0
     """
-    frase_min = frase.lower()
-    lista_solo_letras = ""
-    for letra in frase_min:
-        if letra.isalpha:
-            lista_solo_letras += letra
-    if lista_solo_letras == lista_solo_letras[::-1]:
-        return True
-    else:
-        return False
+    contador = len(frase.split())
+    return contador
 
 
-print(comp_pal_frase("La ruta nos aporto otro paso natural"))
+frase = input("escribe una frase: ")
+print(num_palabras(frase))
