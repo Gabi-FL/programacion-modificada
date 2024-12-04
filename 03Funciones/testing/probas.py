@@ -1,23 +1,43 @@
-def num_palabras(frase: str) -> int:
-    """recibe una frase y te cuenta las palabras
+from datetime import date
+
+
+def genera_identificador(nombre: str) -> str:
+    """recibe el nombre de un usuario y le devuelve su identificador
 
     Args:
-        frase (str): la frase
+        nombre (str): el nombre completo del usuario
 
     Returns:
-        int: el número de palabras
-    >>> num_palabras("Hola")
-    1
-    >>> num_palabras("Hola mundo")
-    2
-    >>> num_palabras("Hola mundo cruel")
-    3
-    >>> num_palabras("")
-    0
+        str: el identificador de usuario
+    >>> genera_identificador("Gabriel Fernández López")
+    'a24gabrielfl'
+    >>> genera_identificador("")
+    'a24'
+    >>> genera_identificador("Gabriel Fernandez")
+    'a24gabrielf'
+    >>> genera_identificador("Gabriel A")
+    'a24gabriela'
     """
-    contador = len(frase.split())
-    return contador
+    tildes = "áéíóúüñç"
+    equivalentes = "aeiouuñç"
+    resultado = "a"
+    hoy = date.today()
+    anho = hoy.year
+    anho_cadena = str(anho)
+    resultado += anho_cadena[2:4]
+    for elemento in nombre.split()[0]:
+        resultado += elemento.lower()
+    for elemento in nombre.split()[1:4]:
+        resultado += elemento[0].lower()
+    resultado_sin_tildes = ""
+    for letra in resultado:
+        if letra not in tildes:
+            resultado_sin_tildes += letra
+        else:
+            indice = tildes.index(letra)
+            resultado_sin_tildes += equivalentes[indice]
+    return resultado_sin_tildes
 
 
-frase = input("escribe una frase: ")
-print(num_palabras(frase))
+nombre = input("Escribe el nombre completo del usuario: ")
+print(genera_identificador(nombre))
