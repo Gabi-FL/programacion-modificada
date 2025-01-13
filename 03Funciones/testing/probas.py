@@ -1,17 +1,10 @@
-lista_nombres = ["Pedro", "Manu", "Rubén", "Pablo", "Rubén"]
-contador = 0
-inicio = 0
-hay_mas = True
+lista = [24, 26, 27, 25, 21, 18, 15]
+posicion1 = int(input("Escribe la primera posición: "))
+posicion2 = int(input("Introduce la segunda posición: "))
+
 try:
-    nombre = input("Introduce un nombre")
-    while hay_mas:
-        try:
-            for elemento in lista_nombres:
-                nombre_encontrado = lista_nombres.index(nombre, inicio)
-                inicio = nombre_encontrado + 1
-                contador += 1
-        except ValueError:
-            print(f"{nombre} aparece {contador}", "vez" if contador == 1 else "veces", "en la lista")
-            hay_mas = False
+    print(f"La media es de {round((lista[posicion1 - 1] + lista[posicion2 - 1]) / 2, 2)}")
+except IndexError:
+    print("La media es 0")
 except:
-    print("Ha ocurrido un error")
+    print("Los valores introducidos no son válidos")
