@@ -21,7 +21,7 @@ class Libro:
             self.ejemplaresPrestados += 1
             return True
         return False
-    
+
     def devolver(self) -> bool:
         if self.ejemplaresPrestados > 0:
             self.ejemplaresPrestados -= 1
