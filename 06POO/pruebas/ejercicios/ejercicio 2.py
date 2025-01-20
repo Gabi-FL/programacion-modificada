@@ -2,7 +2,7 @@ class Rectangulo:
     base: int
     altura: int
 
-    def __init__(self, base=0, altura=0):
+    def __init__(self, base: int = 0, altura: int = 0):
         self.base = base
         self.altura = altura
 
