@@ -1,16 +1,19 @@
+from Persona import Persona
+
+
 class CuentaBancaria:
-    nombre_titular: str
+    titular: Persona
     numero_cuenta: str
     saldo: float
 
-    def __init__(self, nombre_titular: str, numero_cuenta: str, saldo: float = 0):
-        self.nombre_titular = nombre_titular
+    def __init__(self, titular: Persona, numero_cuenta: str, saldo: float = 0):
+        self.titular = titular
         self.numero_cuenta = numero_cuenta
         self.saldo = saldo
 
     def __str__(self):
         return (
-            f"Titular: {self.nombre_titular}\n"
+            f"Titular: {self.titular.nombre}\n"
             f"Número de cuenta: {self.numero_cuenta}\n"
             f"Saldo: {self.saldo}\n"
         )
