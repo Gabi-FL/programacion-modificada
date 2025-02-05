@@ -2,13 +2,9 @@ class Punto:
     __x: int
     __y: int
 
-    def __init__(self, x, y):
+    def __init__(self, x=0, y=0):
         self.x = x
         self.y = y
-        if self.x > 100 or self.x < -100:
-            self.x = 0
-        if self.y > 100 or self.y < -100:
-            self.y = 0
 
     @property
     def x(self):
@@ -16,17 +12,10 @@ class Punto:
 
     @x.setter
     def x(self, x: int):
-        if Punto.puntoXcorrecto(x):
+        if x <= 100 or x >= -100:
             self.__x = x
         else:
-            self.__x = x
-
-    @staticmethod
-    def puntoXcorrecto(x: int):
-        if x > 100 or x < -100:
-            return True
-        else:
-            return False
+            self.__x = 0
 
     @property
     def y(self):
@@ -34,29 +23,22 @@ class Punto:
 
     @y.setter
     def y(self, y: int):
-        if Punto.puntoYcorrecto(y):
+        if y <= 100 or y >= -100:
             self.__y = y
         else:
-            self.__y = y
-
-    @staticmethod
-    def puntoYcorrecto(y: int):
-        if y > 100 or y < -100:
-            return True
-        else:
-            return False
+            self.__y = 0
 
     def moverHorizontal(self, positivo: bool, valor: int):
         if positivo:
-            self.x = (self.x + valor) % 100
+            self.x = min(self.x + valor, 100)
         else:
-            self.x = (self.x + valor) % 100
+            self.x = max(self.x - valor, -100)
 
     def moverVertical(self, positivo: bool, valor: int):
         if positivo:
-            self.y = (self.y + valor) % 100
+            self.y = min(self.y + valor, 100)
         else:
-            self.y = (self.y + valor) % 100
+            self.y = max(self.y - valor, -100)
 
     def obtenerCuadrante(self):
         if self.x > 0 and self.y > 0:
@@ -81,6 +63,23 @@ class Linea:
         self.coordenadas = [p1, p2]
 
     def moverHorizontal(self, positivo: bool, valor: int)-> bool:
-
+        pass
 
     def moverVertical(self, positivo: bool, valor: int):
+        pass
+
+
+if __name__ == "__main__":
+    punto0 = Punto()
+    print(punto0)
+    punto1 = Punto(150, 200)
+    print(punto1)
+    punto = Punto(90, 60)
+    punto.moverHorizontal(True, 5)
+    print(punto)
+    punto.moverHorizontal(False, 5)
+    print(punto)
+    punto.moverHorizontal(True, 20)
+    print(punto)
+    punto.moverHorizontal(False, 2000)
+    print(punto)

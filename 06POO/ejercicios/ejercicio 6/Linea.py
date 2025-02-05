@@ -1,26 +1,24 @@
+from Punto import Punto
+
+
 class Linea:
-    coordenadas: list[object]
+    __coordenadas: list[Punto]
 
-    def __init__(self, p1, p2):
-        if p1.x > 100 or p1.x < -100:
-            p1.x = 0
-        if p1.y > 100 or p1.y < -100:
-            p1.y = 0
-        if p2.x > 100 or p2.x < -100:
-            p2.x = 0
-        if p2.y > 100 or p2.y < -100:
-            p2.y = 0
-        return self.coordenadas
+    def __init__(self, p1: Punto, p2: Punto):
+        self.__coordenadas = [p1, p2]
 
-    def moverHorizontal(self, positivo: bool, valor: int)-> bool:
-        if positivo:
-            self.coordenadas = (self.coordenadas + valor)
-        if positivo is False:
-            self.coordenadas = (self.coordenadas + valor)
+    def __str__(self):
+        return f"Liña que pasa por {self.__coordenadas[0]} e {self.__coordenadas[1]}"
 
-    def moverVertical(self, positivo: bool, valor: int):
-        
-        if positivo:
-            self.coordenadas = (self.coordenadas + valor)
-        if positivo is False:
-            self.coordenadas = (self.coordenadas + valor)
+    def moverHorizontal(self, positivo: bool, valor: int):
+        self.__coordenadas[0].moverHorizontal(positivo, valor)
+        self.__coordenadas[1].moverHorizontal(positivo, valor)
+
+
+if __name__ == "__main__":
+    p1 = Punto(2, 1)
+    p2 = Punto(-3, -4)
+    linea = Linea(p1, p2)
+    print(linea)
+    linea.moverHorizontal(True, 10)
+    print(linea)
