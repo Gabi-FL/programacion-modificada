@@ -14,6 +14,10 @@ class Linea:
         self.__coordenadas[0].moverHorizontal(positivo, valor)
         self.__coordenadas[1].moverHorizontal(positivo, valor)
 
+    def moverVertical(self, positivo: bool, valor: int):
+        self.__coordenadas[0].moverVertical(positivo, valor)
+        self.__coordenadas[1].moverVertical(positivo, valor)
+
 
 if __name__ == "__main__":
     p1 = Punto(2, 1)
@@ -21,4 +25,6 @@ if __name__ == "__main__":
     linea = Linea(p1, p2)
     print(linea)
     linea.moverHorizontal(True, 10)
+    print(linea)
+    linea.moverVertical(True, 10)
     print(linea)
